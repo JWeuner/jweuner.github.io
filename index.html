@@ -13,8 +13,19 @@
         return hashResult;
       }
       
+      function getInAppResult() {
+        if (typeof JWeuner === "undefined") {
+          return 'Error JWeuner object is undefined';
+        } else if (typeof JWeuner.getResult === 'function') {
+          return JWeuner.getResult();
+        } else {
+          return 'Error JWeuner.getResult is not a function';
+        }
+      }
+      
       function init() {
         document.getElementById('hashResult').innerHTML = JSON.stringify(getHashResult());
+        document.getElementById('inAppResult').innerHTML = JSON.stringify(getInAppResult());
       }
       
       window.onload = init;
@@ -25,5 +36,8 @@
     <br>
     <h2>Hash Result</h2>
     <code id="hashResult"></code>
+    <br>
+    <h2>In App Result</h2>
+    <code id="inAppResult"></code>
   </body>
 </html>
