@@ -2,8 +2,28 @@
 <html>
   <head>
     <title>Hello World! Site Title</title>
+    <script>
+      function getHashResult() {
+        const hash = window.location.hash.substr(1);
+        const hashResult = hash.split('&').reduce(function (result, item) {
+          const parts = item.split('=');
+          result[parts[0]] = parts[1];
+          return result;
+        }, {});
+        return hashResult;
+      }
+      
+      function init() {
+        document.getElementById('hashResult').innerHTML = JSON.stringify(getHashResult());
+      }
+      
+      window.onload = init;
+    </script>
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <h1>Hello JWeuner</h1>
+    <br>
+    <h2>Hash Result</h2>
+    <code id="hashResult"></code>
   </body>
 </html>
