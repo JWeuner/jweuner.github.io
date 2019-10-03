@@ -28,6 +28,14 @@
         document.getElementById('inAppResult').innerHTML = JSON.stringify(getInAppResult());
       }
       
+      function pay() {
+        setTimeout(changeLocation, 5000);
+      }
+          
+      function changeLocation() {
+          window.location = "http://tst-app.lyf.eu";
+      }
+      
       window.onload = init;
     </script>
   </head>
@@ -39,5 +47,7 @@
     <br>
     <h2>In App Result</h2>
     <code id="inAppResult"></code>
+    <br>
+    <button onclick="pay()">Payer</button>
   </body>
 </html>
