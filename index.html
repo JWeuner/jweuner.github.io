@@ -13,6 +13,23 @@
         return hashResult;
       }
       
+      function getUserInfo() {
+        if (typeof Lyf !== 'undefined' && Lyf !== null) {
+          document.getElementById('name').innerHTML = Lyf.getName();
+          document.getElementById('email').innerHTML = Lyf.getEmail();
+          document.getElementById('phone').innerHTML = Lyf.getPhone();
+          document.getElementById('country').innerHTML = Lyf.getCountry();
+        }
+      }
+
+      function tradePay() {
+        if (typeof Lyf !== 'undefined' && Lyf !== null) {
+          Lyf.onPay();
+        } else {
+          alert('Payer avec le plugin web');
+        }
+      }
+
       function getInAppResult() {
         if (typeof JWeuner === "undefined") {
           return 'Error JWeuner object is undefined';
@@ -24,6 +41,7 @@
       }
       
       function init() {
+        getUserInfo();
         document.getElementById('hashResult').innerHTML = JSON.stringify(getHashResult());
         document.getElementById('inAppResult').innerHTML = JSON.stringify(getInAppResult());
         checkCookie()
@@ -41,7 +59,8 @@
           
       function changeLocation() {
         //window.location = "https://tst-app.lyf.eu/polling";
-        document.getElementById('a1').click();
+        //document.getElementById('a1').click();
+        window.location = 'https://play.app.goo.gl/?link=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.fivory.prod'
       }
 
       function changeLocation2() {
@@ -122,7 +141,12 @@
     </script>
   </head>
   <body>
-    <h1>Hello JWeuner</h1>
+    <p>Bonjour</p>
+    <p id="name"></p>
+    <p id="email"></p>
+    <p id="phone"></p>
+    <p id="country"></p>
+    <button onclick="tradePay()">Trade pay</button>
     <br>
     <h2>Hash Result</h2>
     <code id="hashResult"></code>
