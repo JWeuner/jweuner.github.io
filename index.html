@@ -40,11 +40,13 @@
       }
           
       function changeLocation() {
-        window.location = "https://tst-app.lyf.eu/polling";
+        //window.location = "https://tst-app.lyf.eu/polling";
+        document.getElementById('a2').click();
       }
 
       function changeLocation2() {
-        window.location = "eu.lyf.sit://polling";
+        //window.location = "eu.lyf.sit://polling";
+        document.getElementById('a2').click();
       }
 
       /* COOKIE */
@@ -132,9 +134,9 @@
     <br>
     <button onclick="pay2()">Payer (Deep Link)</button>
     <br>
-    <a href="https://tst-app.lyf.eu/polling">Href (App Link)</a>
+    <a id="a1" href="https://tst-app.lyf.eu/polling">Href (App Link)</a>
     <br>
-    <a href="eu.lyf.sit://polling">Href (Deep Link)</a>
+    <a id="a2" href="eu.lyf.sit://polling">Href (Deep Link)</a>
     <br>
     <a href="intent://polling/#Intent;scheme=eu.lyf.sit;package=com.fivory.sit;S.browser_fallback_url=http%3A%2F%2Flyf.eu;end">Intent Lyf Pay</a>
     <br>
