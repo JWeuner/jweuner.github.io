@@ -2,7 +2,56 @@
 <html>
   <head>
     <title>jweuner</title>
+    <script>
+      function buildSupportedPaymentMethodData() {
+  // Example supported payment methods:
+  return [{ supportedMethods: "https://uat-app.lyf.eu/webpay" }];
+}
+
+function buildShoppingCartDetails() {
+  // Hardcoded for demo purposes:
+  return {
+    id: "order-123",
+    displayItems: [
+      {
+        label: "Example item",
+        amount: { currency: "USD", value: "1.00" },
+      },
+    ],
+    total: {
+      label: "Total",
+      amount: { currency: "USD", value: "1.00" },
+    },
+  };
+}
+
+      function test() {
+        const checkoutButton = document.getElementById("res");
+checkoutButton.innerText = "Loading…";
+if (window.PaymentRequest) {
+  const request = new PaymentRequest(
+    buildSupportedPaymentMethodData(),
+    buildShoppingCartDetails(),
+  );
+  request
+    .canMakePayment()
+    .then((canMakeAFastPayment) => {
+      checkoutButton.textContent = canMakeAFastPayment
+        ? "OK"
+        : "KO";
+    })
+    .catch((error) => {
+      // The user may have turned off the querying functionality in their
+      // privacy settings. The website does not know whether they can make
+      // a fast payment, so pick a generic title.
+      checkoutButton.textContent = "KO catch";
+    });
+}
+      }
+    </script>
   </head>
   <body>
+    <button onclick="test()">Click</button>
+    <p id="res"></p>
   </body>
 </html>
